@@ -13,16 +13,5 @@ public class Main {
                 .collect(Collectors.groupingBy(String::length));
 
         System.out.println(groupedByLength);
-
-        //Input
-        String str1 = "aabbbgggguoooooooz";
-        //Output - 7o4g3b2a1u1z
-        Map<Character, Long> collect = str1.chars().mapToObj(c -> (char) c)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-
-        collect.forEach((k, v) -> System.out.print(String.valueOf(v) + k));
     }
 }
