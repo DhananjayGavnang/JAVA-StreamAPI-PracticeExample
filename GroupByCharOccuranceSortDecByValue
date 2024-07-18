@@ -8,7 +8,8 @@ public class Main {
         //Input
         String str1 = "aabbbgggguoooooooz";
         //Output - 7o4g3b2a1u1z
-        Map<Character, Long> collect = str1.chars().mapToObj(c -> (char) c)
+        Map<Character, Long> collect = str1.chars()
+                .mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
