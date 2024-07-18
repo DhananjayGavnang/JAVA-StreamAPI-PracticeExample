@@ -1,0 +1,45 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+class Student {
+    private String name;
+    private int grade;
+
+    public Student(String name, int grade) {
+        this.name = name;
+        this.grade = grade;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{name='" + name + "', grade=" + grade + "}";
+    }
+}
+
+public class SortStudentsByGrade {
+    public static void main(String[] args) {
+        List<Student> students = Arrays.asList(
+                new Student("Alice", 85),
+                new Student("Bob", 92),
+                new Student("Charlie", 88),
+                new Student("David", 79),
+                new Student("Eve", 91)
+        );
+
+        // Sort students in descending order by grade
+        List<Student> sortedStudents = students.stream()
+                .sorted(Comparator.comparingInt(Student::getGrade).reversed())
+                .collect(Collectors.toList());
+
+        // Print the sorted list
+        sortedStudents.forEach(System.out::println);
+    }
+}
